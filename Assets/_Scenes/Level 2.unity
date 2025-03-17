@@ -2340,7 +2340,7 @@ MonoBehaviour:
   AmbienceSource: {fileID: 1496573499}
   ambientClip: {fileID: 8300000, guid: e22b3af6f00d34410bb9fab52bb8f3d6, type: 3}
   hitClip: {fileID: 8300000, guid: 1699f9900d76b44c68877561e31f9e41, type: 3}
-  wallClip: {fileID: 8300000, guid: f161a3e688f98455da729a623347daf5, type: 3}
+  killClip: {fileID: 8300000, guid: 39e214c48f8fa4384ae44af6ee833a41, type: 3}
   brickClip: {fileID: 8300000, guid: 8bff1299806fd4255892366ae389d34b, type: 3}
   gameStartClip: {fileID: 8300000, guid: f62a044f6e1074098a67b798d5db0dc9, type: 3}
 --- !u!4 &1496573502
