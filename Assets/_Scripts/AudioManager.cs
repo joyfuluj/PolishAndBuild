@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip ambientClip;
     public AudioClip hitClip;
-    public AudioClip wallClip;
+    public AudioClip killClip;
     public AudioClip brickClip;
     public AudioClip gameStartClip; 
 

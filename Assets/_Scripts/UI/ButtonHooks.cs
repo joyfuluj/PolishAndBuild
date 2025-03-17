@@ -4,6 +4,10 @@ public class ButtonHooks : MonoBehaviour
 {
     public void LoadNextScene()
     {
+        if(AudioManager.instance != null)
+        {
+            AudioManager.instance.PlaySound(AudioManager.instance.gameStartClip);
+        }
         SceneHandler.Instance.LoadNextScene();
     }
 
