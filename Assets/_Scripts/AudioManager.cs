@@ -42,4 +42,12 @@ public class AudioManager : MonoBehaviour
             AmbienceSource.Play();
         }
     }
+
+    public void PlaySound (AudioClip clip)
+    {
+        if (clip != null)
+        {
+            sfxSource.PlayOneShot(clip);
+        }
+    }
 }
