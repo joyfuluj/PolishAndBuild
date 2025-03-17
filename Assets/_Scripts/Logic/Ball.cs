@@ -16,6 +16,10 @@ public class Ball : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Paddle"))
         {
+            if(AudioManager.instance != null)
+            {
+                AudioManager.instance.PlaySound(AudioManager.instance.hitClip);
+            }
             Vector3 directionToFire = (transform.position - other.transform.position).normalized;
             float angleOfContact = Vector3.Angle(transform.forward, directionToFire);
             float returnSpeed = Mathf.Lerp(minBallBounceBackSpeed, maxBallBounceBackSpeed, angleOfContact / 90f);
@@ -40,6 +44,10 @@ public class Ball : MonoBehaviour
     public void FireBall()
     {
         if (isBallActive) return;
+        if(AudioManager.instance != null)
+        {
+            AudioManager.instance.PlaySound(AudioManager.instance.hitClip);
+        }
         transform.parent = null;
         rb.isKinematic = false;
         rb.AddForce(transform.forward * ballLaunchSpeed, ForceMode.Impulse);
