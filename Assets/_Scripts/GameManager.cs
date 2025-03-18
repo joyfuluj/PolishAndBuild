@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+
+using UnityEngine;
 using TMPro;
 using System.Collections;
 
@@ -7,12 +8,14 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     [SerializeField] private int maxLives = 3;
     [SerializeField] private Ball ball;
     [SerializeField] private Transform bricksContainer;
+    [SerializeField] private ScoreUI scoreUI;
     [SerializeField] private ParticleSystem brickDestroyEffect;
 
     [SerializeField] private GameObject[] hearts;
     [SerializeField] private TextMeshProUGUI gameOver;
     private int currentBrickCount;
     private int totalBrickCount;
+    private int score;
 
     private void OnEnable()
     {
@@ -20,6 +23,8 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         ball.ResetBall();
         totalBrickCount = bricksContainer.childCount;
         currentBrickCount = bricksContainer.childCount;
+        score = 0; // Initialize score
+        scoreUI.UpdateScore(score); // Set initial score
 
         //Update the array of hearts
         UpdateHeartsUI();
@@ -36,11 +41,21 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         ball.FireBall();
     }
 
-    public void OnBrickDestroyed(Vector3 position)
+   
+        public void OnBrickDestroyed(Vector3 position)
     {
         // fire audio here
         // implement particle effect here
         // add camera shake here
+        score++;
+        if (scoreUI != null)
+        {
+            scoreUI.UpdateScore(score); // Update the UI safely
+        }
+        else
+        {
+            Debug.Log("ScoreUI is not assigned in GameManager!");
+        }
         currentBrickCount--;
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
         if (brickDestroyEffect != null)
@@ -51,8 +66,9 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     }
 
 
-        if (currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
+        if  (currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
     }
+
 
     public void KillBall()
     {
