@@ -9,6 +9,10 @@ public class Brick : MonoBehaviour
     {
         if (destroyRoutine != null) return;
         if (!other.gameObject.CompareTag("Ball")) return;
+        if(AudioManager.instance != null)
+        {
+            AudioManager.instance.PlaySound(AudioManager.instance.brickClip);
+        }
         destroyRoutine = StartCoroutine(DestroyWithDelay());
     }
 
