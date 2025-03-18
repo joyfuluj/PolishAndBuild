@@ -56,7 +56,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         {
             Debug.Log("ScoreUI is not assigned in GameManager!");
         }
-        CameraShake.Shake(0.5f,2);
+        CameraShake.Shake(0.5f,0.3f);
         currentBrickCount--;
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
         if (brickDestroyEffect != null)
