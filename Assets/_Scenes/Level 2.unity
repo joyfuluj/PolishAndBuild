@@ -2916,6 +2916,7 @@ MonoBehaviour:
   - {fileID: 1944044944}
   - {fileID: 1076476085}
   gameOver: {fileID: 136921071}
+  brickDestroyEffect: {fileID: 198175801688348628, guid: 25c7aa9ad705fe143a4d71c1c8deb7d4, type: 3}
 --- !u!1001 &1708692028
 PrefabInstance:
   m_ObjectHideFlags: 0

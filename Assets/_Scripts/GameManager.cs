@@ -7,6 +7,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     [SerializeField] private int maxLives = 3;
     [SerializeField] private Ball ball;
     [SerializeField] private Transform bricksContainer;
+    [SerializeField] private ParticleSystem brickDestroyEffect;
 
     [SerializeField] private GameObject[] hearts;
     [SerializeField] private TextMeshProUGUI gameOver;
@@ -42,6 +43,14 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         // add camera shake here
         currentBrickCount--;
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
+        if (brickDestroyEffect != null)
+    {
+        ParticleSystem effect = Instantiate(brickDestroyEffect, position, Quaternion.identity);
+        effect.Play();
+        Destroy(effect.gameObject, effect.main.duration); 
+    }
+
+
         if (currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
     }
 
